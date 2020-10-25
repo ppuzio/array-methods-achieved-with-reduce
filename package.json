@@ -1,0 +1,13 @@
+{
+  "name": "array-methods-achieved-with-reduce",
+  "version": "1.0.0",
+  "description": "Repository to keep the code for the article",
+  "main": "index.js",
+  "repository": "https://github.com/ppuzio/array-methods-achieved-with-reduce",
+  "author": "Paweł Puzio",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "jest": "^26.6.1"
+  }
+}
