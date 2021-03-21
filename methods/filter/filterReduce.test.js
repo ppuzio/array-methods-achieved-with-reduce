@@ -1,5 +1,4 @@
-import { expect } from '@jest/globals';
-import { filterReduce } from './filterReduce';
+const { filterReduce }  = require('./filterReduce');
 
 describe('Testing filterReduce', () => {
   test('Should filter out negative values and work the same way as native Array.filter', () => {
@@ -13,6 +12,7 @@ describe('Testing filterReduce', () => {
     const customResult = filterReduce(inputData, filterFunction);
 
     // assert
+    expect(customResult).toEqual(expectedOutput);
     expect(customResult).toEqual(nativeResult);
   });
 });

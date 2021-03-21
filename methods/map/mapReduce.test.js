@@ -1,5 +1,4 @@
-import { expect } from '@jest/globals';
-import { mapReduce } from './mapReduce';
+const { mapReduce } = require('./mapReduce');
 
 describe('Testing mapReduce', () => {
   test('Should multiply each element by 2 and work the same way as native Array.map', () => {
@@ -13,6 +12,7 @@ describe('Testing mapReduce', () => {
     const customResult = mapReduce(inputData, mappingFunction);
 
     // assert
+    expect(customResult).toEqual(expectedOutput);
     expect(customResult).toEqual(nativeResult);
   });
 });

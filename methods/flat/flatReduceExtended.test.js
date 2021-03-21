@@ -25,7 +25,7 @@ describe('flatReduce tests including all cases', () => {
   test.each(cases)(
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
-      const nativeResult = entryArray(flatParam);
+      const nativeResult = entryArray.flat(flatParam);
       const customResult = flatReduceExtended(entryArray, flatParam);
 
       expect(nativeResult).toEqual(resultArray);

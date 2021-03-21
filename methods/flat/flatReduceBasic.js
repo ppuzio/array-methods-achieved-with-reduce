@@ -1,4 +1,4 @@
-export const flatReduceBasic = (array, times) => {
+const flatReduceBasic = (array, times) => {
   if (times === 0) return data;
 
   let iterationsLeft = times;
@@ -12,3 +12,5 @@ export const flatReduceBasic = (array, times) => {
 };
 
 const reducerFunction = (total, amount) => total.concat(amount);
+
+module.exports = { flatReduceBasic }

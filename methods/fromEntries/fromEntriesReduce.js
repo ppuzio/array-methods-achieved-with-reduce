@@ -1,4 +1,6 @@
-export const fromEntriesReduce = (array) =>
+// TODO - solve the Map problem
+
+const fromEntriesReduce = (array) =>
   array.reduce(
     (total, currentValue) => ({
       ...total,
@@ -6,3 +8,5 @@ export const fromEntriesReduce = (array) =>
     }),
     {},
   );
+
+  module.exports = { fromEntriesReduce }
