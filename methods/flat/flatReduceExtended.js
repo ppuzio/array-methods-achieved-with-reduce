@@ -1,6 +1,7 @@
 const flatReduceExtended = (array, times) => {
   const timesFalsyButNotUndefined = times !== undefined;
-  const timeTruthyButNotANumber = !times || isNaN(times) || Array.isArray(times) && times.length === 0;
+  const timeTruthyButNotANumber =
+    !times || isNaN(times) || (Array.isArray(times) && times.length === 0);
   if (timesFalsyButNotUndefined && timeTruthyButNotANumber) return array;
 
   let iterationsLeft = times;
@@ -15,4 +16,4 @@ const flatReduceExtended = (array, times) => {
 
 const reducerFunction = (total, amount) => total.concat(amount);
 
-module.exports = { flatReduceExtended }
+module.exports = { flatReduceExtended };

@@ -1,9 +1,9 @@
-export const summingDeclarative = (array) => {
-  return array.reduce(sumReducer, 0);
-};
-
 const sumReducer = (total, currentValue) => {
   return total + currentValue;
+};
+
+const summingDeclarative = (array) => {
+  return array.reduce(sumReducer, 0);
 };
 
 const sumReducerWithLogger = (total, currentValue, currentIndex) => {
@@ -11,6 +11,5 @@ const sumReducerWithLogger = (total, currentValue, currentIndex) => {
   console.log('Total value: ', total);
   console.log('Current value: ', currentValue);
   console.log('----------------');
-  console.log('Current step');
   return total + currentValue;
 };

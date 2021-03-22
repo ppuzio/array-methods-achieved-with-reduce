@@ -30,6 +30,6 @@ describe('flatReduce tests including all cases', () => {
 
       expect(nativeResult).toEqual(resultArray);
       expect(customResult).toEqual(resultArray);
-    },
+    }
   );
 });

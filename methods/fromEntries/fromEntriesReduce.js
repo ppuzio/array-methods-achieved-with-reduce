@@ -6,7 +6,7 @@ const fromEntriesReduce = (array) =>
       ...total,
       [currentValue[0]]: currentValue[1],
     }),
-    {},
+    {}
   );
 
-  module.exports = { fromEntriesReduce }
+module.exports = { fromEntriesReduce };

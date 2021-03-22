@@ -1,4 +1,4 @@
-const { filterReduce }  = require('./filterReduce');
+const { filterReduce } = require('./filterReduce');
 
 describe('Testing filterReduce', () => {
   test('Should filter out negative values and work the same way as native Array.filter', () => {
