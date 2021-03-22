@@ -13,4 +13,4 @@ const flatReduceBasic = (array, times) => {
 
 const reducerFunction = (total, amount) => total.concat(amount);
 
-module.exports = { flatReduceBasic }
+module.exports = { flatReduceBasic };
