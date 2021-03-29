@@ -1,5 +1,15 @@
 // TODO - solve the Map problem
 
+const fromEntriesReduceWithReturn = (array) =>
+  array.reduce((total, currentValue) => {
+    const key = [currentValue[0]];
+    const value = currentValue[1];
+    return {
+      ...total,
+      key: value,
+    };
+  }, {});
+
 const fromEntriesReduce = (array) =>
   array.reduce(
     (total, currentValue) => ({
@@ -9,4 +19,4 @@ const fromEntriesReduce = (array) =>
     {}
   );
 
-module.exports = { fromEntriesReduce };
+module.exports = { fromEntriesReduce, fromEntriesReduceWithReturn };

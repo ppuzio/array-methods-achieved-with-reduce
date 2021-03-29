@@ -1,5 +1,5 @@
 const flatReduceBasic = (array, times) => {
-  if (times === 0) return data;
+  if (times === 0) return array;
 
   let iterationsLeft = times;
   let flat = array;
