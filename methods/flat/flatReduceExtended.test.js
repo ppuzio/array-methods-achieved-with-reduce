@@ -1,4 +1,5 @@
 const { flatReduceExtended, flatReduceExtendedOtherApproach } = require('./flatReduceExtended');
+const { arrayOfNumbers, arrayOfNumbersNested } = require("./data");
 
 const nestedArray = [1, [2, [3, [4], 5], 6], 7];
 const nestedArrayFlattenedByOne = [1, 2, [3, [4], 5], 6, 7];
@@ -29,10 +30,13 @@ const cases = [
   [nestedArray, 2, nestedArrayFlattenedByTwo],
   [nestedArray, 3, nestedArrayFlattenedByThree],
   [nestedArray, 10000, nestedArrayFlattenedByThree],
-
-  // todo - add test for arr.flat(new Date()) -> 1.6B
-  // todo - add behavior for inf
 ];
+
+const casesWithPossibleLoops = [
+  ...cases,
+  [arrayOfNumbersNested, new Date(), arrayOfNumbers],
+  [arrayOfNumbersNested, Number.POSITIVE_INFINITY, arrayOfNumbers],
+]
 
 describe('flatReduce tests including all cases', () => {
   test.each(cases)(
@@ -46,7 +50,7 @@ describe('flatReduce tests including all cases', () => {
     }
   );
 
-  test.each(cases)(
+  test.each(casesWithPossibleLoops)(
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
       const nativeResult = entryArray.flat(flatParam);

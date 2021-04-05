@@ -35,10 +35,12 @@ const flatReduceExtendedOtherApproach = (array, times) => {
 
   let iterationsLeft = times;
   let flat = array;
+  let loops = 0;
   do {
     flat = flat.reduce(reducerFunction, []);
     iterationsLeft--;
-  } while (iterationsLeft >= 1);
+    loops++;
+  } while (iterationsLeft >= 1 && flat.length > loops);
 
   return flat;
 };
