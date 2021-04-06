@@ -1,20 +1,19 @@
+const { flatReduceExtended, flatReduceFinal } = require('./flatReduceExtended');
 const {
-  flatReduceExtended,
-  flatReduceExtendedOtherApproach,
-} = require('./flatReduceExtended');
-const { arrayOfNumbers, arrayOfNumbersNested } = require('./data');
+  arrayOfNumbers,
+  veryLongArray,
+  veryLongArrayNested,
+} = require('./data');
 
 const nestedArray = [1, [2, [3, [4], 5], 6], 7];
 const nestedArrayFlattenedByOne = [1, 2, [3, [4], 5], 6, 7];
 const nestedArrayFlattenedByTwo = [1, 2, 3, [4], 5, 6, 7];
-const nestedArrayFlattenedByThree = [1, 2, 3, 4, 5, 6, 7];
+const nestedArrayFlattenedByThree = arrayOfNumbers(7);
 
 const nestedArrayWave = [1, [2, [3, 4, [5], 6]], 7, [8, [9, [10]]]];
 const nestedArrayWaveFlattenedByOne = [1, 2, [3, 4, [5], 6], 7, 8, [9, [10]]];
 const nestedArrayWaveFlattenedByTwo = [1, 2, 3, 4, [5], 6, 7, 8, 9, [10]];
-const nestedArrayWaveFlattenedByThree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-// TODO - create a very nested array for inf/date
+const nestedArrayWaveFlattenedByThree = arrayOfNumbers(10);
 
 const cases = [
   // falsy values that return the original array
@@ -47,8 +46,8 @@ const cases = [
 
 const casesWithPossibleLoops = [
   ...cases,
-  [arrayOfNumbersNested, new Date(), arrayOfNumbers],
-  [arrayOfNumbersNested, Number.POSITIVE_INFINITY, arrayOfNumbers],
+  [veryLongArrayNested, new Date(), veryLongArray],
+  [veryLongArrayNested, Number.POSITIVE_INFINITY, veryLongArray],
 ];
 
 describe('flatReduce tests including all cases', () => {
@@ -67,10 +66,7 @@ describe('flatReduce tests including all cases', () => {
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
       const nativeResult = entryArray.flat(flatParam);
-      const customResult = flatReduceExtendedOtherApproach(
-        entryArray,
-        flatParam
-      );
+      const customResult = flatReduceFinal(entryArray, flatParam);
 
       expect(nativeResult).toEqual(resultArray);
       expect(customResult).toEqual(resultArray);
