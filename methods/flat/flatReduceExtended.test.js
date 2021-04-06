@@ -1,10 +1,18 @@
-const { flatReduceExtended, flatReduceExtendedOtherApproach } = require('./flatReduceExtended');
-const { arrayOfNumbers, arrayOfNumbersNested } = require("./data");
+const {
+  flatReduceExtended,
+  flatReduceExtendedOtherApproach,
+} = require('./flatReduceExtended');
+const { arrayOfNumbers, arrayOfNumbersNested } = require('./data');
 
 const nestedArray = [1, [2, [3, [4], 5], 6], 7];
 const nestedArrayFlattenedByOne = [1, 2, [3, [4], 5], 6, 7];
 const nestedArrayFlattenedByTwo = [1, 2, 3, [4], 5, 6, 7];
 const nestedArrayFlattenedByThree = [1, 2, 3, 4, 5, 6, 7];
+
+const nestedArrayWave = [1, [2, [3, 4, [5], 6]], 7, [8, [9, [10]]]];
+const nestedArrayWaveFlattenedByOne = [1, 2, [3, 4, [5], 6], 7, 8, [9, [10]]];
+const nestedArrayWaveFlattenedByTwo = [1, 2, 3, 4, [5], 6, 7, 8, 9, [10]];
+const nestedArrayWaveFlattenedByThree = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 // TODO - create a very nested array for inf/date
 
@@ -23,20 +31,25 @@ const cases = [
   [nestedArray, 'test', nestedArray],
   [nestedArray, [], nestedArray],
   [nestedArray, -1, nestedArray],
-  
+
   // non-falsy values that return a modified array
   [nestedArray, undefined, nestedArrayFlattenedByOne],
   [nestedArray, 1, nestedArrayFlattenedByOne],
   [nestedArray, 2, nestedArrayFlattenedByTwo],
   [nestedArray, 3, nestedArrayFlattenedByThree],
   [nestedArray, 10000, nestedArrayFlattenedByThree],
+
+  // test for an array that is not so regular with the way it's nested
+  [nestedArrayWave, 1, nestedArrayWaveFlattenedByOne],
+  [nestedArrayWave, 2, nestedArrayWaveFlattenedByTwo],
+  [nestedArrayWave, 3, nestedArrayWaveFlattenedByThree],
 ];
 
 const casesWithPossibleLoops = [
   ...cases,
   [arrayOfNumbersNested, new Date(), arrayOfNumbers],
   [arrayOfNumbersNested, Number.POSITIVE_INFINITY, arrayOfNumbers],
-]
+];
 
 describe('flatReduce tests including all cases', () => {
   test.each(cases)(
@@ -54,7 +67,10 @@ describe('flatReduce tests including all cases', () => {
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
       const nativeResult = entryArray.flat(flatParam);
-      const customResult = flatReduceExtendedOtherApproach(entryArray, flatParam);
+      const customResult = flatReduceExtendedOtherApproach(
+        entryArray,
+        flatParam
+      );
 
       expect(nativeResult).toEqual(resultArray);
       expect(customResult).toEqual(resultArray);
