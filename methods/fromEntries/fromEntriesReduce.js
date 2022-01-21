@@ -1,6 +1,6 @@
 const fromEntriesReduceWithReturn = (array) =>
   array.reduce((total, currentValue) => {
-    const key = [currentValue[0]];
+    const key = currentValue[0];
     const value = currentValue[1];
     return {
       ...total,

@@ -1,7 +1,7 @@
 const filterReduce = (array, callback) =>
   array.reduce(
-    (total, currentValue) =>
-      callback(currentValue) ? total.concat(currentValue) : total,
+    (accumulator, currentValue) =>
+      callback(currentValue) ? accumulator.concat(currentValue) : accumulator,
     []
   );
 

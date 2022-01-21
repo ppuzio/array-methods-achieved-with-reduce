@@ -46,11 +46,12 @@ const cases = [
 
 const casesWithPossibleLoops = [
   ...cases,
+  [veryLongArrayNested, new Date, veryLongArray],
   [veryLongArrayNested, new Date(), veryLongArray],
   [veryLongArrayNested, Number.POSITIVE_INFINITY, veryLongArray],
 ];
 
-describe('flatReduce tests including all cases', () => {
+describe('flatReduce tests', () => {
   test.each(cases)(
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
@@ -61,7 +62,9 @@ describe('flatReduce tests including all cases', () => {
       expect(customResult).toEqual(resultArray);
     }
   );
+});
 
+describe('flatReduceFinal including possible loops', () => {
   test.each(casesWithPossibleLoops)(
     'Should flatten %p by %p and return %p in both native and custom function',
     (entryArray, flatParam, resultArray) => {
