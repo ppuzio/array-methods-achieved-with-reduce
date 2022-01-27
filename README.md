@@ -1,17 +1,52 @@
 # array-methods-achieved-with-reduce
 
-## Already in the repo
+Repository with examples used in my Medium article *How to use Reduce in Javascript*
+
+## Installation
+
+1. Clone this project.
+2. Install all dependencies by opening this project in terminal and running 
+
+```sh
+yarn
+```
+
+or
+
+```sh
+npm install
+```
+
+3. Launch already existing tests or write new/edit them according to your needs.
+
+## Tests
+
+I'm using `Jest` as a testing framework.
+To launch tests, simply run
+
+```sh
+yarn test
+```
+
+or
+
+```sh
+npm run jest
+```
+
+## Methods
+
+### **Already in the repo**
 
 * filter
 * flat
 * Object.fromEntries
 * map
 
-## Focus on first (easy and popular ones)
+### Ones that should be doable quickly (easy and popular ones) and I might implement them soon
 
 * every()
 * some()
-* filter()
 * find()
 * findIndex()
 * includes() - find with Boolean(result)
@@ -19,7 +54,7 @@
 * indexOf()
 * slice()
 
-## Focus on later (if ever)
+### Focus on later (if ever)
 
 * toString()
 * push()
@@ -31,11 +66,11 @@
 * fill()
 * flatMap()
 
-## Experimental
+### Experimental
 
 * at()
 
-## Problematic
+### Problematic
 
 * entries() - will have to create an iterator
 * keys() - iterator
@@ -50,11 +85,11 @@
 * sort()
 * toLocaleString()
 
-## No point implementing
+### No point implementing
 
 * toSource() - out of use
 * forEach() - forEach is found in almost every language
-* Array.isArray()
-* reduce()
+* Array.isArray() - reduce is an *Array.prototype* method
+* reduce() - :)
 * concat()
 * Array.of()
